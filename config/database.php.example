@@ -45,15 +45,39 @@ if (getenv('MYSQL_HOST')) {
     define('DB_PASS', getenv('DB_PASS') ?: '');
     define('DB_NAME', getenv('DB_NAME') ?: 'risk_assessment_db');
     define('DB_TYPE', getenv('DB_TYPE') ?: 'mysql');
-} else {
-    // Konfigurasi lokal/default
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_NAME', 'risk_assessment_db');
-    define('DB_PORT', 3306);
-    define('DB_TYPE', 'mysql');
-}
+    } else {
+        // Konfigurasi lokal/default
+        // Jika di Railway tapi tidak ada environment variables, tampilkan instruksi setup
+        if (getenv('RAILWAY_ENVIRONMENT') || getenv('RAILWAY_PROJECT_ID') || file_exists('/.dockerenv')) {
+            // Kemungkinan di Railway tapi database belum di-setup
+            $setup_url = (defined('BASE_URL') ? BASE_URL : '/') . 'pages/setup_railway.php';
+            die("
+                <div style='font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 50px auto; border: 2px solid #dc3545; border-radius: 8px; background: #fff;'>
+                    <h2 style='color: #dc3545;'>⚠️ Database Belum Dikonfigurasi</h2>
+                    <p>Environment variables untuk database tidak ditemukan. Aplikasi ini memerlukan database untuk berfungsi.</p>
+                    <h3>Langkah Setup:</h3>
+                    <ol>
+                        <li>Buka <strong>Railway Dashboard</strong> → Project Anda</li>
+                        <li>Klik <strong>\"New +\"</strong> → <strong>\"Database\"</strong> → <strong>\"Add MySQL\"</strong></li>
+                        <li>Railway akan otomatis link database ke web service</li>
+                        <li>Set environment variable <strong>BASE_URL</strong> di Web Service → Variables</li>
+                        <li>Restart web service (Redeploy)</li>
+                    </ol>
+                    <p><strong>Atau</strong> klik link berikut untuk instruksi lengkap:</p>
+                    <a href='{$setup_url}' style='display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; margin-top: 10px;'>📖 Lihat Instruksi Setup</a>
+                    <hr style='margin: 20px 0;'>
+                    <p><small>Jika Anda menggunakan database lokal, pastikan environment variables sudah di-set dengan benar.</small></p>
+                </div>
+            ");
+        }
+        
+        define('DB_HOST', 'localhost');
+        define('DB_USER', 'root');
+        define('DB_PASS', '');
+        define('DB_NAME', 'risk_assessment_db');
+        define('DB_PORT', 3306);
+        define('DB_TYPE', 'mysql');
+    }
 
 // Koneksi database
 function getDBConnection() {
@@ -93,8 +117,37 @@ function getDBConnection() {
         
         // Cek koneksi
         if ($conn->connect_error) {
+            // Error handling yang lebih informatif
+            $error_msg = $conn->connect_error;
+            $error_no = $conn->connect_errno;
+            
+            // Jika di Railway tapi connection gagal, tampilkan instruksi
+            if (getenv('RAILWAY_ENVIRONMENT') || getenv('RAILWAY_PROJECT_ID') || file_exists('/.dockerenv')) {
+                $setup_url = (defined('BASE_URL') ? BASE_URL : '/') . 'pages/setup_railway.php';
+                die("
+                    <div style='font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 50px auto; border: 2px solid #dc3545; border-radius: 8px; background: #fff;'>
+                        <h2 style='color: #dc3545;'>❌ Database Connection Gagal</h2>
+                        <p><strong>Error:</strong> {$error_msg} (Error Code: {$error_no})</p>
+                        <p>Koneksi ke database MySQL gagal. Kemungkinan:</p>
+                        <ul>
+                            <li>Database service belum ditambahkan di Railway</li>
+                            <li>Environment variables belum di-set dengan benar</li>
+                            <li>Database service belum di-link ke web service</li>
+                        </ul>
+                        <p><strong>Solusi:</strong></p>
+                        <ol>
+                            <li>Buka Railway Dashboard → Tambahkan MySQL Database service</li>
+                            <li>Pastikan database di-link ke web service</li>
+                            <li>Cek environment variables di Web Service → Variables</li>
+                            <li>Restart web service (Redeploy)</li>
+                        </ol>
+                        <a href='{$setup_url}' style='display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; margin-top: 10px;'>📖 Lihat Instruksi Setup Lengkap</a>
+                    </div>
+                ");
+            }
+            
             // Jika database tidak ada, coba buat
-            if ($conn->connect_errno == 1049) {
+            if ($error_no == 1049) {
                 // Database tidak ada, buat dulu
                 $conn_temp = new mysqli(DB_HOST, DB_USER, DB_PASS);
                 if ($conn_temp->connect_error) {
