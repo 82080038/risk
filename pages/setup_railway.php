@@ -2,15 +2,43 @@
 /**
  * Setup Page untuk Railway
  * Halaman ini membantu setup database di Railway
+ * Bisa diakses tanpa database connection
  */
 
-// Disable session untuk halaman setup
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+// Minimal config untuk halaman ini
+$base_url = getenv('BASE_URL') ?: (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/';
+if (substr($base_url, -1) !== '/') {
+    $base_url .= '/';
 }
 
-$page_title = 'Setup Database Railway';
-include __DIR__ . '/../includes/header.php';
+// Try to load config if exists (but don't fail if it doesn't)
+$config_file = __DIR__ . '/../config/config.php';
+if (file_exists($config_file)) {
+    try {
+        require_once $config_file;
+        if (defined('BASE_URL')) {
+            $base_url = BASE_URL;
+        }
+    } catch (Exception $e) {
+        // Ignore config errors for setup page
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Database Railway</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
 ?>
 
 <div class="container-fluid py-4">
@@ -98,10 +126,10 @@ include __DIR__ . '/../includes/header.php';
                     </div>
 
                     <div class="mt-4">
-                        <a href="<?php echo BASE_URL; ?>debug.php" class="btn btn-info me-2">
+                        <a href="<?php echo $base_url; ?>debug.php" class="btn btn-info me-2">
                             <i class="fas fa-bug me-1"></i>Cek Debug Info
                         </a>
-                        <a href="<?php echo BASE_URL; ?>" class="btn btn-primary">
+                        <a href="<?php echo $base_url; ?>" class="btn btn-primary">
                             <i class="fas fa-home me-1"></i>Kembali ke Home
                         </a>
                     </div>
@@ -111,5 +139,19 @@ include __DIR__ . '/../includes/header.php';
     </div>
 </div>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<footer class="footer mt-auto py-3 bg-light border-top">
+    <div class="container text-center">
+        <span class="text-muted">
+            Diciptakan oleh <strong>AIPDA PATRI SIHALOHO, S.H., CPM</strong> 
+            <a href="tel:081265511982" class="text-decoration-none text-muted">
+                <i class="fas fa-phone-alt ms-2 me-1"></i>081265511982
+            </a>
+            &copy; 2024
+        </span>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
