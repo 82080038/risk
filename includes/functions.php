@@ -9,6 +9,11 @@ $db_file = __DIR__ . '/../config/database.php';
 $db_template = __DIR__ . '/../config/database.php.example';
 
 if (!file_exists($db_file) && file_exists($db_template)) {
+    // Ensure config directory exists
+    $config_dir = __DIR__ . '/../config';
+    if (!is_dir($config_dir)) {
+        mkdir($config_dir, 0755, true);
+    }
     // Copy template to actual file
     copy($db_template, $db_file);
 }
