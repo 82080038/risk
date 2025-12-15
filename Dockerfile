@@ -3,17 +3,14 @@
 
 FROM php:8.1-apache
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libzip-dev \
-    unzip \
-    git \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql zip mbstring \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install system dependencies
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libfreetype6-dev libzip-dev unzip git curl
+RUN rm -rf /var/lib/apt/lists/*
+
+# Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql zip mbstring
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -24,8 +21,10 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install PHP dependencies (skip if vendor already exists)
+RUN if [ ! -d "vendor" ]; then \
+        composer install --no-dev --optimize-autoloader --no-interaction || true; \
+    fi
 
 # Set permissions
 RUN chmod -R 755 assets/uploads/ && \
@@ -45,9 +44,12 @@ RUN echo '<VirtualHost *:80>\n\
     </Directory>\n\
 </VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
-# Expose port
+# Expose port (Railway/Render will use $PORT)
 EXPOSE 80
+EXPOSE 8080
 
-# Start Apache
+# Start command (will be overridden by Railway/Render)
+# For Railway: php -S 0.0.0.0:$PORT
+# For Render with Apache: apache2-foreground
 CMD ["apache2-foreground"]
 
