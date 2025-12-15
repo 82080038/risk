@@ -5,7 +5,7 @@
     "dockerfilePath": "Dockerfile.railway"
   },
   "deploy": {
-    "startCommand": "php -S 0.0.0.0:$PORT -t .",
+    "startCommand": "sh -c 'php -S 0.0.0.0:${PORT:-8080} -t .'",
     "healthcheckPath": "/",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",

@@ -34,6 +34,7 @@ RUN chmod -R 755 assets/uploads logs
 # Expose port
 EXPOSE 8080
 
-# Start PHP built-in server (Railway will inject $PORT)
-CMD php -S 0.0.0.0:${PORT:-8080} -t .
+# Start PHP built-in server (Railway will inject $PORT via environment)
+# Use sh -c to properly expand environment variables
+CMD sh -c 'php -S 0.0.0.0:${PORT:-8080} -t .'
 
