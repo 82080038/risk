@@ -4,8 +4,56 @@
  * Risk Assessment Objek Wisata
  */
 
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../config/config.php';
+// Auto-create database.php from template if not exists (for Railway/Render deployment)
+$db_file = __DIR__ . '/../config/database.php';
+$db_template = __DIR__ . '/../config/database.php.example';
+
+if (!file_exists($db_file) && file_exists($db_template)) {
+    // Copy template to actual file
+    copy($db_template, $db_file);
+}
+
+require_once $db_file;
+
+// Auto-create config.php from template if not exists (for Railway/Render deployment)
+$config_file = __DIR__ . '/../config/config.php';
+$config_template = __DIR__ . '/../config/config.php.example';
+
+if (!file_exists($config_file) && file_exists($config_template)) {
+    // Read template
+    $config_content = file_get_contents($config_template);
+    
+    // Replace BASE_URL with environment variable or default
+    $base_url = getenv('BASE_URL') ?: 'http://localhost/RISK/';
+    $config_content = str_replace(
+        "define('BASE_URL', getenv('BASE_URL') ?: 'http://localhost/RISK/');",
+        "define('BASE_URL', getenv('BASE_URL') ?: 'http://localhost/RISK/');",
+        $config_content
+    );
+    
+    // Add APP_ENV support if not exists
+    if (strpos($config_content, "define('APP_ENV'") === false) {
+        $config_content = str_replace(
+            "// Path aplikasi",
+            "// Environment (development, production)\ndefine('APP_ENV', getenv('APP_ENV') ?: 'development');\n\n// Path aplikasi",
+            $config_content
+        );
+    }
+    
+    // Update error reporting based on environment
+    if (strpos($config_content, "if (APP_ENV === 'production')") === false) {
+        $config_content = str_replace(
+            "error_reporting(E_ALL);\nini_set('display_errors', 1);",
+            "// Error reporting based on environment\nif (defined('APP_ENV') && APP_ENV === 'production') {\n    error_reporting(0);\n    ini_set('display_errors', 0);\n    ini_set('log_errors', 1);\n    ini_set('error_log', APP_PATH . 'logs/error.log');\n} else {\n    error_reporting(E_ALL);\n    ini_set('display_errors', 1);\n}",
+            $config_content
+        );
+    }
+    
+    // Write config file
+    file_put_contents($config_file, $config_content);
+}
+
+require_once $config_file;
 require_once __DIR__ . '/image_helper.php';
 
 /**
