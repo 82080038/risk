@@ -19,6 +19,14 @@ if (getenv('MYSQL_HOST')) {
     define('DB_PASS', getenv('MYSQL_PASSWORD'));
     define('DB_NAME', getenv('MYSQL_DATABASE'));
     define('DB_TYPE', 'mysql');
+} elseif (getenv('PGHOST') || getenv('POSTGRES_HOST')) {
+    // Railway PostgreSQL format (alternative)
+    define('DB_HOST', getenv('PGHOST') ?: getenv('POSTGRES_HOST') ?: 'localhost');
+    define('DB_PORT', getenv('PGPORT') ?: getenv('POSTGRES_PORT') ?: 5432);
+    define('DB_USER', getenv('PGUSER') ?: getenv('POSTGRES_USER') ?: 'postgres');
+    define('DB_PASS', getenv('PGPASSWORD') ?: getenv('POSTGRES_PASSWORD') ?: '');
+    define('DB_NAME', getenv('PGDATABASE') ?: getenv('POSTGRES_DB') ?: 'postgres');
+    define('DB_TYPE', 'postgresql');
 } elseif (getenv('DATABASE_URL')) {
     // Parse DATABASE_URL dari Render (format: postgresql://user:pass@host:port/dbname)
     $url = parse_url(getenv('DATABASE_URL'));
@@ -70,6 +78,11 @@ function getDBConnection() {
         }
     } else {
         // MySQL connection (default)
+        // Check if MySQLi extension is available
+        if (!extension_loaded('mysqli')) {
+            die("Error: MySQLi extension tidak tersedia. Silakan install extension ini.");
+        }
+        
         $port = defined('DB_PORT') ? DB_PORT : 3306;
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, $port);
         

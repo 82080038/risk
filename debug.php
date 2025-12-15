@@ -41,12 +41,27 @@ $env_vars = [
     'MYSQL_PORT',
     'MYSQL_DATABASE',
     'MYSQL_USER',
-    'MYSQL_PASSWORD'
+    'MYSQL_PASSWORD',
+    'DATABASE_URL',
+    'PGHOST',
+    'PGPORT',
+    'PGUSER',
+    'PGPASSWORD',
+    'PGDATABASE',
+    'POSTGRES_HOST',
+    'POSTGRES_PORT',
+    'POSTGRES_USER',
+    'POSTGRES_PASSWORD',
+    'POSTGRES_DB'
 ];
 
 foreach ($env_vars as $var) {
     $value = getenv($var);
-    echo "$var: " . ($value ? $value : "❌ NOT SET") . "<br>";
+    if ($value && (strpos($var, 'PASSWORD') !== false || strpos($var, 'PASS') !== false)) {
+        echo "$var: " . (strlen($value) > 0 ? "✅ SET (hidden)" : "❌ NOT SET") . "<br>";
+    } else {
+        echo "$var: " . ($value ? $value : "❌ NOT SET") . "<br>";
+    }
 }
 
 // 4. Try to load config
@@ -116,10 +131,28 @@ try {
     if (file_exists(__DIR__ . '/config/database.php')) {
         require_once __DIR__ . '/config/database.php';
         if (function_exists('getDBConnection')) {
+            if (defined('DB_TYPE')) {
+                echo "DB_TYPE: " . DB_TYPE . "<br>";
+            }
+            if (defined('DB_HOST')) {
+                echo "DB_HOST: " . DB_HOST . "<br>";
+            }
+            if (defined('DB_NAME')) {
+                echo "DB_NAME: " . DB_NAME . "<br>";
+            }
+            if (defined('DB_USER')) {
+                echo "DB_USER: " . DB_USER . "<br>";
+            }
+            
             $conn = getDBConnection();
             if ($conn) {
                 echo "✅ Database connection successful<br>";
-                $conn->close();
+                if ($conn instanceof mysqli) {
+                    echo "Connection type: MySQLi<br>";
+                    $conn->close();
+                } elseif ($conn instanceof PDO) {
+                    echo "Connection type: PDO (PostgreSQL)<br>";
+                }
             } else {
                 echo "❌ Database connection failed<br>";
             }
@@ -131,6 +164,10 @@ try {
     }
 } catch (Exception $e) {
     echo "❌ Database error: " . $e->getMessage() . "<br>";
+    echo "Error details: " . $e->getFile() . " line " . $e->getLine() . "<br>";
+} catch (Error $e) {
+    echo "❌ Fatal database error: " . $e->getMessage() . "<br>";
+    echo "Error details: " . $e->getFile() . " line " . $e->getLine() . "<br>";
 }
 
 // 7. Check directory permissions
