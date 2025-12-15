@@ -2,17 +2,23 @@
 /**
  * Konfigurasi Aplikasi - TEMPLATE
  * Risk Assessment Objek Wisata
+ * Support untuk Railway.app, Render.com, dan environment variables
  * 
  * INSTRUKSI:
  * 1. Copy file ini menjadi config.php
- * 2. Sesuaikan BASE_URL dengan domain Anda
+ * 2. Untuk Railway/Render: Aplikasi akan otomatis membaca dari environment variables
+ * 3. Untuk lokal: Isi dengan kredensial database Anda
  */
 
-// Base URL - SESUAIKAN DENGAN DOMAIN ANDA
-define('BASE_URL', 'http://localhost/RISK/');
+// Base URL
+// Gunakan environment variable jika tersedia (untuk hosting online)
+define('BASE_URL', getenv('BASE_URL') ?: 'http://localhost/RISK/');
 
 // Path aplikasi
 define('APP_PATH', __DIR__ . '/../');
+
+// Environment (development, production)
+define('APP_ENV', getenv('APP_ENV') ?: 'development');
 
 // Session
 session_start();
@@ -20,16 +26,16 @@ session_start();
 // Timezone
 date_default_timezone_set('Asia/Jakarta');
 
-// Error reporting (disable di production)
-// Untuk production, set ke 0 dan enable error logging
-// error_reporting(0);
-// ini_set('display_errors', 0);
-// ini_set('log_errors', 1);
-// ini_set('error_log', APP_PATH . 'logs/error.log');
-
-// Untuk development (current)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Error reporting based on environment
+if (APP_ENV === 'production') {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    ini_set('log_errors', 1);
+    ini_set('error_log', APP_PATH . 'logs/error.log');
+} else {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
 
 // Upload settings
 define('UPLOAD_PATH', APP_PATH . 'assets/uploads/');
