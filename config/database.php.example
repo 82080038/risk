@@ -2,17 +2,50 @@
 /**
  * Konfigurasi Database - TEMPLATE
  * Risk Assessment Objek Wisata
+ * Support untuk Railway.app, Render.com, dan environment variables
  * 
  * INSTRUKSI:
  * 1. Copy file ini menjadi database.php
- * 2. Isi dengan kredensial database Anda
+ * 2. Untuk Railway/Render: Aplikasi akan otomatis membaca dari environment variables
+ * 3. Untuk lokal: Isi dengan kredensial database Anda
  */
 
-// Konfigurasi database
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'risk_assessment_db');
+// Cek Railway MySQL variables (prioritas pertama)
+if (getenv('MYSQL_HOST')) {
+    // Railway MySQL format
+    define('DB_HOST', getenv('MYSQL_HOST'));
+    define('DB_PORT', getenv('MYSQL_PORT') ?: 3306);
+    define('DB_USER', getenv('MYSQL_USER'));
+    define('DB_PASS', getenv('MYSQL_PASSWORD'));
+    define('DB_NAME', getenv('MYSQL_DATABASE'));
+    define('DB_TYPE', 'mysql');
+} elseif (getenv('DATABASE_URL')) {
+    // Parse DATABASE_URL dari Render (format: postgresql://user:pass@host:port/dbname)
+    $url = parse_url(getenv('DATABASE_URL'));
+    
+    define('DB_HOST', $url['host'] ?? 'localhost');
+    define('DB_PORT', $url['port'] ?? 5432); // PostgreSQL default port
+    define('DB_USER', $url['user'] ?? '');
+    define('DB_PASS', $url['pass'] ?? '');
+    define('DB_NAME', ltrim($url['path'] ?? '', '/'));
+    define('DB_TYPE', 'postgresql'); // Untuk PostgreSQL di Render
+} elseif (getenv('DB_HOST')) {
+    // Menggunakan environment variables individual
+    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+    define('DB_PORT', getenv('DB_PORT') ?: 3306); // MySQL default port
+    define('DB_USER', getenv('DB_USER') ?: 'root');
+    define('DB_PASS', getenv('DB_PASS') ?: '');
+    define('DB_NAME', getenv('DB_NAME') ?: 'risk_assessment_db');
+    define('DB_TYPE', getenv('DB_TYPE') ?: 'mysql');
+} else {
+    // Konfigurasi lokal/default
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'risk_assessment_db');
+    define('DB_PORT', 3306);
+    define('DB_TYPE', 'mysql');
+}
 
 // Koneksi database
 function getDBConnection() {
@@ -21,10 +54,27 @@ function getDBConnection() {
         die("Error: Konfigurasi database belum lengkap. Pastikan DB_HOST, DB_USER, dan DB_NAME sudah didefinisikan.");
     }
     
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // Untuk PostgreSQL (Render), gunakan PDO
+    // Untuk MySQL, gunakan mysqli
+    $db_type = defined('DB_TYPE') ? DB_TYPE : 'mysql';
     
-    // Cek koneksi
-    if ($conn->connect_error) {
+    if ($db_type === 'postgresql') {
+        // PostgreSQL connection (untuk Render)
+        try {
+            $dsn = "pgsql:host=" . DB_HOST . ";port=" . (defined('DB_PORT') ? DB_PORT : 5432) . ";dbname=" . DB_NAME;
+            $conn = new PDO($dsn, DB_USER, DB_PASS);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $conn;
+        } catch (PDOException $e) {
+            die("Koneksi PostgreSQL gagal: " . $e->getMessage());
+        }
+    } else {
+        // MySQL connection (default)
+        $port = defined('DB_PORT') ? DB_PORT : 3306;
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, $port);
+        
+        // Cek koneksi
+        if ($conn->connect_error) {
         // Jika database tidak ada, coba buat
         if ($conn->connect_errno == 1049) {
             // Database tidak ada, buat dulu
@@ -46,10 +96,10 @@ function getDBConnection() {
         } else {
             die("Koneksi database gagal: " . $conn->connect_error . "<br>Silakan jalankan setup_database.php terlebih dahulu.");
         }
+        
+        // Set charset UTF-8
+        $conn->set_charset("utf8mb4");
     }
-    
-    // Set charset UTF-8
-    $conn->set_charset("utf8mb4");
     
     return $conn;
 }
