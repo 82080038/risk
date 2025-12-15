@@ -5,7 +5,7 @@ FROM php:8.1-apache
 
 # Install system dependencies
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libfreetype6-dev libzip-dev unzip git curl
+RUN apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libfreetype6-dev libzip-dev libonig-dev unzip git curl
 RUN rm -rf /var/lib/apt/lists/*
 
 # Configure and install PHP extensions
