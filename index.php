@@ -44,10 +44,19 @@ require_once $config_file;
 require_once __DIR__ . '/includes/functions.php';
 
 // Redirect ke dashboard jika sudah login, atau ke login jika belum
-if (isLoggedIn()) {
-    header('Location: ' . BASE_URL . 'pages/dashboard.php');
-} else {
-    header('Location: ' . BASE_URL . 'pages/login.php');
+try {
+    if (isLoggedIn()) {
+        header('Location: ' . BASE_URL . 'pages/dashboard.php');
+    } else {
+        header('Location: ' . BASE_URL . 'pages/login.php');
+    }
+    exit;
+} catch (Exception $e) {
+    // Jika ada error, tampilkan error untuk debugging
+    if (defined('APP_ENV') && APP_ENV === 'development') {
+        die('Error: ' . $e->getMessage() . '<br>File: ' . $e->getFile() . '<br>Line: ' . $e->getLine());
+    } else {
+        die('Terjadi kesalahan. Silakan cek logs atau akses debug.php untuk informasi lebih lanjut.');
+    }
 }
-exit;
 
