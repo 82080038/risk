@@ -34,9 +34,48 @@ Railway menyediakan MySQL database service. Aplikasi ini **sudah support MySQL**
 
 ### 2. Import Database Schema (3 menit)
 
-**⚠️ Catatan**: Railway tidak menyediakan SQL query editor di dashboard. Gunakan salah satu metode berikut:
+**✅ Railway menyediakan Database Management Interface langsung di dashboard!** Gunakan metode ini untuk import SQL dengan mudah.
 
-#### Metode 1: Via Railway CLI (Paling Mudah) ⭐ Recommended
+#### Metode 1: Via Railway Dashboard (Paling Mudah) ⭐ Recommended
+
+**Langkah 1: Akses Database Interface**
+
+1. **Buka MySQL service** di Railway Dashboard
+2. **Klik tab "Database"** (atau langsung akses URL database)
+3. **URL format**: 
+   ```
+   https://railway.com/project/PROJECT_ID/service/SERVICE_ID/database?environmentId=ENV_ID
+   ```
+   - Ganti `PROJECT_ID`, `SERVICE_ID`, dan `ENV_ID` dengan ID dari Railway Dashboard
+   - Atau langsung klik MySQL service → tab "Database"
+
+**Langkah 2: Import SQL Files**
+
+1. **Di halaman Database**, Anda akan melihat interface untuk menjalankan SQL queries
+2. **Buka file SQL** di text editor lokal:
+   - `sql/database.sql`
+   - `sql/master_data.sql`
+   - `sql/data_personil.sql`
+
+3. **Copy seluruh isi file** (Ctrl+A → Ctrl+C)
+
+4. **Paste di SQL editor** Railway (Ctrl+V)
+
+5. **Klik "Run"** atau tekan **Ctrl+Enter** (atau tombol execute)
+
+6. **Tunggu sampai selesai** (akan muncul "Success" atau "Query executed successfully")
+
+7. **Ulangi untuk setiap file**:
+   - Import `database.sql` dulu (struktur tabel)
+   - Lalu `master_data.sql` (data master)
+   - Terakhir `data_personil.sql` (data user)
+
+**Catatan**: 
+- Pastikan import urut: `database.sql` → `master_data.sql` → `data_personil.sql`
+- Tunggu setiap query selesai sebelum lanjut ke file berikutnya
+- Jika ada error, cek apakah tabel sudah dibuat di query sebelumnya
+
+#### Metode 2: Via Railway CLI (Alternatif)
 
 **Langkah 1: Install Railway CLI** (jika belum)
 
@@ -89,7 +128,7 @@ railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABAS
 railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/data_personil.sql
 ```
 
-#### Metode 2: Via MySQL Client Eksternal (Alternatif)
+#### Metode 3: Via MySQL Client Eksternal (Alternatif)
 
 **Langkah 1: Dapatkan Connection Credentials**
 
@@ -152,7 +191,7 @@ mysql -h containers-us-west-xxx.railway.app -P 3306 -u root -p"PASSWORD_DARI_RAI
 
 **Catatan**: Ganti `containers-us-west-xxx.railway.app`, `PASSWORD_DARI_RAILWAY`, dan `MYSQL_DATABASE` dengan nilai dari Railway Variables.
 
-#### Metode 3: Via phpMyAdmin Online (Alternatif)
+#### Metode 4: Via phpMyAdmin Online (Alternatif)
 
 1. **Buka**: https://www.phpmyadmin.co/ (atau hosting phpMyAdmin lainnya)
 2. **Connect menggunakan credentials** dari Railway
