@@ -76,6 +76,23 @@ try {
 echo "<h2>5. Database Config</h2>";
 try {
     $db_file = __DIR__ . '/config/database.php';
+    if (!file_exists($db_file)) {
+        echo "❌ database.php not found, trying to create...<br>";
+        // Ensure config directory exists
+        $config_dir = __DIR__ . '/config';
+        if (!is_dir($config_dir)) {
+            mkdir($config_dir, 0755, true);
+            echo "✅ Created config directory<br>";
+        }
+        $template = __DIR__ . '/config/database.php.example';
+        if (file_exists($template)) {
+            copy($template, $db_file);
+            echo "✅ Created database.php from template<br>";
+        } else {
+            echo "❌ Template database.php.example not found<br>";
+        }
+    }
+    
     if (file_exists($db_file)) {
         require_once $db_file;
         echo "✅ Database config loaded<br>";
@@ -85,15 +102,12 @@ try {
             echo "DB_USER: " . DB_USER . "<br>";
         }
     } else {
-        echo "❌ database.php not found, trying to create...<br>";
-        $template = __DIR__ . '/config/database.php.example';
-        if (file_exists($template)) {
-            copy($template, $db_file);
-            echo "✅ Created database.php from template<br>";
-        }
+        echo "❌ database.php still not found after creation attempt<br>";
     }
 } catch (Exception $e) {
     echo "❌ Error loading database config: " . $e->getMessage() . "<br>";
+} catch (Error $e) {
+    echo "❌ Fatal error loading database config: " . $e->getMessage() . "<br>";
 }
 
 // 6. Test database connection
@@ -139,7 +153,7 @@ foreach ($dirs as $dir) {
 
 // 8. Test redirect
 echo "<h2>8. Redirect Test</h2>";
-$base_url = defined('BASE_URL') ? BASE_URL : getenv('BASE_URL') ?: 'http://localhost/RISK/';
+$base_url = defined('BASE_URL') ? BASE_URL : (getenv('BASE_URL') ?: 'http://localhost/RISK/');
 echo "BASE_URL: $base_url<br>";
 echo "Login URL: " . $base_url . "pages/login.php<br>";
 echo "<a href='" . $base_url . "pages/login.php'>Try Login Page</a><br>";
