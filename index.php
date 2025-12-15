@@ -43,20 +43,44 @@ if (!file_exists($config_file) && file_exists($config_template)) {
 require_once $config_file;
 require_once __DIR__ . '/includes/functions.php';
 
+// Get BASE_URL
+$base_url = defined('BASE_URL') ? BASE_URL : (getenv('BASE_URL') ?: '/');
+
+// Ensure BASE_URL ends with /
+if (substr($base_url, -1) !== '/') {
+    $base_url .= '/';
+}
+
 // Redirect ke dashboard jika sudah login, atau ke login jika belum
 try {
-    if (isLoggedIn()) {
-        header('Location: ' . BASE_URL . 'pages/dashboard.php');
+    if (function_exists('isLoggedIn') && isLoggedIn()) {
+        $redirect_url = $base_url . 'pages/dashboard.php';
+        header('Location: ' . $redirect_url);
+        exit;
     } else {
-        header('Location: ' . BASE_URL . 'pages/login.php');
+        // Instead of redirect, include login page directly to avoid redirect issues
+        $login_file = __DIR__ . '/pages/login.php';
+        if (file_exists($login_file)) {
+            // Set BASE_URL for login page
+            if (!defined('BASE_URL')) {
+                define('BASE_URL', $base_url);
+            }
+            require_once $login_file;
+            exit;
+        } else {
+            // Fallback: show simple login form
+            die('Login page not found. Please check file: ' . $login_file);
+        }
     }
-    exit;
 } catch (Exception $e) {
     // Jika ada error, tampilkan error untuk debugging
-    if (defined('APP_ENV') && APP_ENV === 'development') {
-        die('Error: ' . $e->getMessage() . '<br>File: ' . $e->getFile() . '<br>Line: ' . $e->getLine());
-    } else {
-        die('Terjadi kesalahan. Silakan cek logs atau akses debug.php untuk informasi lebih lanjut.');
-    }
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    die('Error: ' . $e->getMessage() . '<br>File: ' . $e->getFile() . '<br>Line: ' . $e->getLine() . '<br><br><a href="debug.php">Go to Debug Page</a>');
+} catch (Error $e) {
+    // Handle fatal errors
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    die('Fatal Error: ' . $e->getMessage() . '<br>File: ' . $e->getFile() . '<br>Line: ' . $e->getLine() . '<br><br><a href="debug.php">Go to Debug Page</a>');
 }
 
