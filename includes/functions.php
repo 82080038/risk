@@ -8,17 +8,78 @@
 $db_file = __DIR__ . '/../config/database.php';
 $db_template = __DIR__ . '/../config/database.php.example';
 
-if (!file_exists($db_file) && file_exists($db_template)) {
+if (!file_exists($db_file)) {
     // Ensure config directory exists
     $config_dir = __DIR__ . '/../config';
     if (!is_dir($config_dir)) {
         mkdir($config_dir, 0755, true);
     }
-    // Copy template to actual file
-    copy($db_template, $db_file);
+    
+    // Copy template to actual file if template exists
+    if (file_exists($db_template)) {
+        copy($db_template, $db_file);
+    } else {
+        // If template doesn't exist, create a minimal database.php
+        $minimal_db = "<?php\n";
+        $minimal_db .= "// Auto-generated database config\n";
+        $minimal_db .= "if (getenv('MYSQL_HOST')) {\n";
+        $minimal_db .= "    define('DB_HOST', getenv('MYSQL_HOST'));\n";
+        $minimal_db .= "    define('DB_PORT', getenv('MYSQL_PORT') ?: 3306);\n";
+        $minimal_db .= "    define('DB_USER', getenv('MYSQL_USER'));\n";
+        $minimal_db .= "    define('DB_PASS', getenv('MYSQL_PASSWORD'));\n";
+        $minimal_db .= "    define('DB_NAME', getenv('MYSQL_DATABASE'));\n";
+        $minimal_db .= "    define('DB_TYPE', 'mysql');\n";
+        $minimal_db .= "} elseif (getenv('DATABASE_URL')) {\n";
+        $minimal_db .= "    \$url = parse_url(getenv('DATABASE_URL'));\n";
+        $minimal_db .= "    define('DB_HOST', \$url['host'] ?? 'localhost');\n";
+        $minimal_db .= "    define('DB_PORT', \$url['port'] ?? 5432);\n";
+        $minimal_db .= "    define('DB_USER', \$url['user'] ?? '');\n";
+        $minimal_db .= "    define('DB_PASS', \$url['pass'] ?? '');\n";
+        $minimal_db .= "    define('DB_NAME', ltrim(\$url['path'] ?? '', '/'));\n";
+        $minimal_db .= "    define('DB_TYPE', 'postgresql');\n";
+        $minimal_db .= "} else {\n";
+        $minimal_db .= "    define('DB_HOST', 'localhost');\n";
+        $minimal_db .= "    define('DB_USER', 'root');\n";
+        $minimal_db .= "    define('DB_PASS', '');\n";
+        $minimal_db .= "    define('DB_NAME', 'risk_assessment_db');\n";
+        $minimal_db .= "    define('DB_PORT', 3306);\n";
+        $minimal_db .= "    define('DB_TYPE', 'mysql');\n";
+        $minimal_db .= "}\n";
+        $minimal_db .= "function getDBConnection() {\n";
+        $minimal_db .= "    if (!defined('DB_HOST') || !defined('DB_USER') || !defined('DB_NAME')) {\n";
+        $minimal_db .= "        die('Error: Konfigurasi database belum lengkap.');\n";
+        $minimal_db .= "    }\n";
+        $minimal_db .= "    \$db_type = defined('DB_TYPE') ? DB_TYPE : 'mysql';\n";
+        $minimal_db .= "    if (\$db_type === 'postgresql') {\n";
+        $minimal_db .= "        try {\n";
+        $minimal_db .= "            \$dsn = 'pgsql:host=' . DB_HOST . ';port=' . (defined('DB_PORT') ? DB_PORT : 5432) . ';dbname=' . DB_NAME;\n";
+        $minimal_db .= "            \$conn = new PDO(\$dsn, DB_USER, DB_PASS);\n";
+        $minimal_db .= "            \$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n";
+        $minimal_db .= "            return \$conn;\n";
+        $minimal_db .= "        } catch (PDOException \$e) {\n";
+        $minimal_db .= "            die('Koneksi PostgreSQL gagal: ' . \$e->getMessage());\n";
+        $minimal_db .= "        }\n";
+        $minimal_db .= "    } else {\n";
+        $minimal_db .= "        \$port = defined('DB_PORT') ? DB_PORT : 3306;\n";
+        $minimal_db .= "        \$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, \$port);\n";
+        $minimal_db .= "        if (\$conn->connect_error) {\n";
+        $minimal_db .= "            die('Database connection failed: ' . \$conn->connect_error);\n";
+        $minimal_db .= "        }\n";
+        $minimal_db .= "        \$conn->set_charset('utf8mb4');\n";
+        $minimal_db .= "        return \$conn;\n";
+        $minimal_db .= "    }\n";
+        $minimal_db .= "}\n";
+        $minimal_db .= "?>\n";
+        file_put_contents($db_file, $minimal_db);
+    }
 }
 
-require_once $db_file;
+// Now require the file (it should exist after the above check)
+if (file_exists($db_file)) {
+    require_once $db_file;
+} else {
+    die('Error: Failed to create database.php. Please check file permissions.');
+}
 
 // Auto-create config.php from template if not exists (for Railway/Render deployment)
 $config_file = __DIR__ . '/../config/config.php';
