@@ -4,14 +4,14 @@
 
 Railway memberikan connection string PostgreSQL:
 ```
-postgresql://postgres:jAYhXYHgicXkEYjNOzizOkkYdJIgsEix@centerbeam.proxy.rlwy.net:51432/railway
+postgresql://postgres:BgMSlFmoVzbgAwBpzQMisIeMuNNnBpkJ@turntable.proxy.rlwy.net:39090/railway
 ```
 
 **Informasi dari connection string:**
-- **Host**: `centerbeam.proxy.rlwy.net`
-- **Port**: `51432`
+- **Host**: `turntable.proxy.rlwy.net`
+- **Port**: `39090`
 - **User**: `postgres`
-- **Password**: `jAYhXYHgicXkEYjNOzizOkkYdJIgsEix`
+- **Password**: `BgMSlFmoVzbgAwBpzQMisIeMuNNnBpkJ`
 - **Database**: `railway`
 
 ---
@@ -26,7 +26,7 @@ postgresql://postgres:jAYhXYHgicXkEYjNOzizOkkYdJIgsEix@centerbeam.proxy.rlwy.net
 4. **Tambahkan variable baru**:
    ```
    Key: DATABASE_URL
-   Value: postgresql://postgres:jAYhXYHgicXkEYjNOzizOkkYdJIgsEix@centerbeam.proxy.rlwy.net:51432/railway
+   Value: postgresql://postgres:BgMSlFmoVzbgAwBpzQMisIeMuNNnBpkJ@turntable.proxy.rlwy.net:39090/railway
    ```
 
 5. **Tambahkan juga**:
