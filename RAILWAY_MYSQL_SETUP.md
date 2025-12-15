@@ -34,46 +34,132 @@ Railway menyediakan MySQL database service. Aplikasi ini **sudah support MySQL**
 
 ### 2. Import Database Schema (3 menit)
 
-#### Via Railway Web Interface (Paling Mudah)
+**⚠️ Catatan**: Railway tidak menyediakan SQL query editor di dashboard. Gunakan salah satu metode berikut:
 
-1. **Klik MySQL Database service** di Railway Dashboard
-2. **Klik tab "Data"**
-3. **Klik "Query"** (akan membuka SQL editor)
-4. **Copy-paste SQL berikut** (satu per satu, tunggu selesai sebelum lanjut):
+#### Metode 1: Via Railway CLI (Paling Mudah) ⭐ Recommended
 
-**📄 File 1: Struktur Database**
-- **Copy** dari: https://github.com/82080038/risk/blob/main/sql/database.sql
-- **Atau copy langsung**:
-```sql
--- Copy seluruh isi file sql/database.sql
--- Paste di SQL editor → Run
+**Langkah 1: Install Railway CLI** (jika belum)
+
+**Windows (PowerShell):**
+```powershell
+# Install via npm (jika sudah install Node.js)
+npm install -g @railway/cli
+
+# Atau download dari: https://railway.app/cli
 ```
-- **Klik "Run"** atau tekan **Ctrl+Enter**
-- **Tunggu sampai selesai** (akan muncul "Success" atau "Query executed successfully")
 
-**📄 File 2: Master Data (Aspek, Elemen, Kriteria)**
-- **Copy** dari: https://github.com/82080038/risk/blob/main/sql/master_data.sql
-- **Paste di SQL editor** → **Run**
-- **Tunggu sampai selesai**
+**Atau download langsung:**
+- Buka: https://railway.app/cli
+- Download untuk Windows
+- Extract dan tambahkan ke PATH
 
-**📄 File 3: Data Personil**
-- **Copy** dari: https://github.com/82080038/risk/blob/main/sql/data_personil.sql
-- **Paste di SQL editor** → **Run**
-- **Tunggu sampai selesai**
-
-#### Via Railway CLI (Alternatif)
-
-Jika Anda sudah install Railway CLI:
-
+**Langkah 2: Login ke Railway**
 ```bash
-# Connect ke database
-railway connect MySQL
+railway login
+```
 
-# Import SQL files (satu per satu)
+**Langkah 3: Connect ke MySQL Database**
+```bash
+# Masuk ke direktori project
+cd E:\xampp\htdocs\RISK
+
+# Link ke project Railway
+railway link
+
+# Connect ke MySQL service
+railway connect MySQL
+```
+
+**Langkah 4: Import SQL Files**
+```bash
+# Import struktur database
 mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/database.sql
+
+# Import master data
 mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/master_data.sql
+
+# Import data personil
 mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/data_personil.sql
 ```
+
+**Atau jika Railway CLI sudah set environment variables:**
+```bash
+railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/database.sql
+railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/master_data.sql
+railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/data_personil.sql
+```
+
+#### Metode 2: Via MySQL Client Eksternal (Alternatif)
+
+**Langkah 1: Dapatkan Connection Credentials**
+
+1. **Klik MySQL service** di Railway Dashboard
+2. **Klik tab "Variables"**
+3. **Copy credentials berikut**:
+   - `MYSQL_HOST` (contoh: `containers-us-west-xxx.railway.app`)
+   - `MYSQL_PORT` (biasanya `3306`)
+   - `MYSQL_USER` (contoh: `root`)
+   - `MYSQL_PASSWORD` (password yang diberikan Railway)
+   - `MYSQL_DATABASE` (nama database)
+
+**Langkah 2: Install MySQL Client**
+
+**Windows:**
+- Download MySQL Workbench: https://dev.mysql.com/downloads/workbench/
+- Atau install MySQL Command Line Client (termasuk di XAMPP)
+
+**Langkah 3: Connect ke Database**
+
+**Via MySQL Workbench:**
+1. Buka MySQL Workbench
+2. Klik **"+"** untuk connection baru
+3. Isi:
+   - **Connection Name**: Railway MySQL
+   - **Hostname**: `MYSQL_HOST` (dari Railway)
+   - **Port**: `MYSQL_PORT` (dari Railway)
+   - **Username**: `MYSQL_USER` (dari Railway)
+   - **Password**: `MYSQL_PASSWORD` (dari Railway)
+4. Klik **"Test Connection"** → **"OK"**
+5. Double-click connection untuk connect
+
+**Langkah 4: Import SQL Files**
+
+1. **Buka file SQL** di text editor:
+   - `sql/database.sql`
+   - `sql/master_data.sql`
+   - `sql/data_personil.sql`
+
+2. **Copy seluruh isi file** (Ctrl+A → Ctrl+C)
+
+3. **Di MySQL Workbench**:
+   - Klik tab **"Query"** (atau tekan Ctrl+T)
+   - Paste SQL (Ctrl+V)
+   - Klik **"Execute"** (atau tekan Ctrl+Shift+Enter)
+   - Tunggu sampai selesai (akan muncul "Success")
+
+4. **Ulangi untuk setiap file** (database.sql → master_data.sql → data_personil.sql)
+
+**Via Command Line (Windows PowerShell):**
+```powershell
+# Masuk ke direktori project
+cd E:\xampp\htdocs\RISK
+
+# Import SQL files (ganti dengan credentials dari Railway)
+mysql -h containers-us-west-xxx.railway.app -P 3306 -u root -p"PASSWORD_DARI_RAILWAY" MYSQL_DATABASE < sql/database.sql
+mysql -h containers-us-west-xxx.railway.app -P 3306 -u root -p"PASSWORD_DARI_RAILWAY" MYSQL_DATABASE < sql/master_data.sql
+mysql -h containers-us-west-xxx.railway.app -P 3306 -u root -p"PASSWORD_DARI_RAILWAY" MYSQL_DATABASE < sql/data_personil.sql
+```
+
+**Catatan**: Ganti `containers-us-west-xxx.railway.app`, `PASSWORD_DARI_RAILWAY`, dan `MYSQL_DATABASE` dengan nilai dari Railway Variables.
+
+#### Metode 3: Via phpMyAdmin Online (Alternatif)
+
+1. **Buka**: https://www.phpmyadmin.co/ (atau hosting phpMyAdmin lainnya)
+2. **Connect menggunakan credentials** dari Railway
+3. **Pilih database** yang sudah dibuat
+4. **Klik tab "SQL"**
+5. **Copy-paste SQL** dari file `sql/database.sql`, `master_data.sql`, `data_personil.sql`
+6. **Klik "Go"** untuk execute
 
 ### 3. Restart Web Service (30 detik)
 
@@ -83,7 +169,7 @@ mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/data
 4. **Tunggu sampai deploy selesai** (2-3 menit)
    - Status akan berubah dari "Building" → "Deploying" → "Active"
 
-### 4. Verifikasi (30 detik)
+### 5. Verifikasi Aplikasi (30 detik)
 
 1. **Buka URL aplikasi**: 
    ```
