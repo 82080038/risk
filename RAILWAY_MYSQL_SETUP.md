@@ -34,48 +34,11 @@ Railway menyediakan MySQL database service. Aplikasi ini **sudah support MySQL**
 
 ### 2. Import Database Schema (3 menit)
 
-**✅ Railway menyediakan Database Management Interface langsung di dashboard!** Gunakan metode ini untuk import SQL dengan mudah.
+**⚠️ Catatan Penting**: Railway **TIDAK menyediakan SQL query editor** di dashboard. Railway hanya menyediakan interface untuk **melihat dan mengedit data** (bukan untuk menjalankan SQL queries).
 
-#### Metode 1: Via Railway Dashboard (Paling Mudah) ⭐ Recommended
+**Untuk import SQL schema, gunakan salah satu metode berikut:**
 
-**Langkah 1: Akses Database Interface**
-
-1. **Buka MySQL service** di Railway Dashboard
-2. **Klik tab "Database"** (atau langsung akses URL database)
-3. **URL format**: 
-   ```
-   https://railway.com/project/PROJECT_ID/service/SERVICE_ID/database?environmentId=ENV_ID
-   ```
-   - Ganti `PROJECT_ID`, `SERVICE_ID`, dan `ENV_ID` dengan ID dari Railway Dashboard
-   - Atau langsung klik MySQL service → tab "Database"
-
-**Langkah 2: Import SQL Files**
-
-1. **Di halaman Database**, Anda akan melihat interface untuk menjalankan SQL queries
-2. **Buka file SQL** di text editor lokal:
-   - `sql/database.sql`
-   - `sql/master_data.sql`
-   - `sql/data_personil.sql`
-
-3. **Copy seluruh isi file** (Ctrl+A → Ctrl+C)
-
-4. **Paste di SQL editor** Railway (Ctrl+V)
-
-5. **Klik "Run"** atau tekan **Ctrl+Enter** (atau tombol execute)
-
-6. **Tunggu sampai selesai** (akan muncul "Success" atau "Query executed successfully")
-
-7. **Ulangi untuk setiap file**:
-   - Import `database.sql` dulu (struktur tabel)
-   - Lalu `master_data.sql` (data master)
-   - Terakhir `data_personil.sql` (data user)
-
-**Catatan**: 
-- Pastikan import urut: `database.sql` → `master_data.sql` → `data_personil.sql`
-- Tunggu setiap query selesai sebelum lanjut ke file berikutnya
-- Jika ada error, cek apakah tabel sudah dibuat di query sebelumnya
-
-#### Metode 2: Via Railway CLI (Alternatif)
+#### Metode 1: Via Railway CLI (Paling Mudah) ⭐ Recommended
 
 **Langkah 1: Install Railway CLI** (jika belum)
 
@@ -128,7 +91,7 @@ railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABAS
 railway run mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < sql/data_personil.sql
 ```
 
-#### Metode 3: Via MySQL Client Eksternal (Alternatif)
+#### Metode 2: Via MySQL Workbench (Alternatif - Mudah untuk Windows)
 
 **Langkah 1: Dapatkan Connection Credentials**
 
@@ -191,7 +154,44 @@ mysql -h containers-us-west-xxx.railway.app -P 3306 -u root -p"PASSWORD_DARI_RAI
 
 **Catatan**: Ganti `containers-us-west-xxx.railway.app`, `PASSWORD_DARI_RAILWAY`, dan `MYSQL_DATABASE` dengan nilai dari Railway Variables.
 
-#### Metode 4: Via phpMyAdmin Online (Alternatif)
+#### Metode 3: Via DBeaver / Beekeeper Studio (Alternatif - Cross Platform)
+
+**DBeaver** dan **Beekeeper Studio** adalah aplikasi database management yang mendukung MySQL.
+
+**Langkah 1: Install DBeaver**
+- Download: https://dbeaver.io/download/
+- Install sesuai OS Anda
+
+**Langkah 2: Connect ke Railway MySQL**
+1. Buka DBeaver
+2. Klik **"New Database Connection"** → Pilih **"MySQL"**
+3. Isi connection details dari Railway Variables:
+   - **Host**: `MYSQL_HOST` (dari Railway)
+   - **Port**: `MYSQL_PORT` (dari Railway, biasanya 3306)
+   - **Database**: `MYSQL_DATABASE` (dari Railway)
+   - **Username**: `MYSQL_USER` (dari Railway)
+   - **Password**: `MYSQL_PASSWORD` (dari Railway)
+4. Klik **"Test Connection"** → **"OK"**
+
+**Langkah 3: Import SQL Files**
+1. Klik kanan pada database → **"SQL Editor"** → **"New SQL Script"**
+2. Buka file `sql/database.sql` di text editor
+3. Copy seluruh isi (Ctrl+A → Ctrl+C)
+4. Paste di SQL editor DBeaver (Ctrl+V)
+5. Klik **"Execute SQL Script"** (Ctrl+Alt+X)
+6. Ulangi untuk `master_data.sql` dan `data_personil.sql`
+
+#### Metode 4: Via Web-Based Tools (Alternatif - Tidak Perlu Install)
+
+**Opsi A: Indiequery** (Web-based MySQL client)
+1. Buka: https://indiequery.com
+2. Connect menggunakan `DATABASE_PUBLIC_URL` dari Railway
+3. Jalankan SQL queries via web interface
+
+**Opsi B: Sequel.sh** (Web-based MySQL client)
+1. Buka: https://sequel.sh
+2. Connect menggunakan credentials dari Railway
+3. Jalankan SQL queries via web interface
 
 1. **Buka**: https://www.phpmyadmin.co/ (atau hosting phpMyAdmin lainnya)
 2. **Connect menggunakan credentials** dari Railway
