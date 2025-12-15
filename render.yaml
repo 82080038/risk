@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: risk-assessment-app
+    env: php
+    buildCommand: composer install --no-dev --optimize-autoloader
+    startCommand: php -S 0.0.0.0:$PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PHP_VERSION
+        value: 8.1
+      - key: BASE_URL
+        sync: false  # Set manual di Render Dashboard
+
+databases:
+  - name: risk-assessment-db
+    databaseName: risk_assessment_db
+    plan: free
+
