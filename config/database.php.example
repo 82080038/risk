@@ -67,14 +67,19 @@ function getDBConnection() {
     $db_type = defined('DB_TYPE') ? DB_TYPE : 'mysql';
     
     if ($db_type === 'postgresql') {
-        // PostgreSQL connection (untuk Render)
+        // PostgreSQL connection (untuk Railway/Render)
         try {
+            // Check if PDO PostgreSQL extension is available
+            if (!extension_loaded('pdo_pgsql')) {
+                die("Error: PDO PostgreSQL extension (pdo_pgsql) tidak tersedia. Silakan install extension ini.");
+            }
+            
             $dsn = "pgsql:host=" . DB_HOST . ";port=" . (defined('DB_PORT') ? DB_PORT : 5432) . ";dbname=" . DB_NAME;
             $conn = new PDO($dsn, DB_USER, DB_PASS);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;
         } catch (PDOException $e) {
-            die("Koneksi PostgreSQL gagal: " . $e->getMessage());
+            die("Koneksi PostgreSQL gagal: " . $e->getMessage() . "<br>Host: " . DB_HOST . ", Port: " . (defined('DB_PORT') ? DB_PORT : 5432) . ", Database: " . DB_NAME);
         }
     } else {
         // MySQL connection (default)
