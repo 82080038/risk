@@ -1,0 +1,58 @@
+<?php
+/**
+ * Konfigurasi Database - TEMPLATE
+ * Risk Assessment Objek Wisata
+ * 
+ * INSTRUKSI:
+ * 1. Copy file ini menjadi database.php
+ * 2. Isi dengan kredensial database Anda
+ */
+
+// Konfigurasi database
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'risk_assessment_db');
+
+// Koneksi database
+function getDBConnection() {
+    // Cek apakah database sudah didefinisikan
+    if (!defined('DB_HOST') || !defined('DB_USER') || !defined('DB_NAME')) {
+        die("Error: Konfigurasi database belum lengkap. Pastikan DB_HOST, DB_USER, dan DB_NAME sudah didefinisikan.");
+    }
+    
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    
+    // Cek koneksi
+    if ($conn->connect_error) {
+        // Jika database tidak ada, coba buat
+        if ($conn->connect_errno == 1049) {
+            // Database tidak ada, buat dulu
+            $conn_temp = new mysqli(DB_HOST, DB_USER, DB_PASS);
+            if ($conn_temp->connect_error) {
+                die("Koneksi MySQL gagal: " . $conn_temp->connect_error . "<br>Silakan jalankan setup_database.php terlebih dahulu.");
+            }
+            $sql = "CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+            if ($conn_temp->query($sql)) {
+                $conn_temp->close();
+                // Coba koneksi lagi
+                $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                if ($conn->connect_error) {
+                    die("Koneksi database gagal setelah dibuat: " . $conn->connect_error);
+                }
+            } else {
+                die("Gagal membuat database: " . $conn_temp->error);
+            }
+        } else {
+            die("Koneksi database gagal: " . $conn->connect_error . "<br>Silakan jalankan setup_database.php terlebih dahulu.");
+        }
+    }
+    
+    // Set charset UTF-8
+    $conn->set_charset("utf8mb4");
+    
+    return $conn;
+}
+
+?>
+

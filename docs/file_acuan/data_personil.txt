@@ -1,0 +1,182 @@
+================================================================================
+DATA PERSONIL (DIPERBARUI) - RISK ASSESSMENT OBJEK WISATA
+Dari: Data_Personil_SatPamobvit_Resmi.xlsx
+================================================================================
+
+1. NRP: 72100664
+   Nama: Tangio Haojahan Sitanggang, S.H.
+   Pangkat: IPTU
+   Jabatan: Kasat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 72100664
+   Password: 72100664
+   Role: admin
+--------------------------------------------------------------------------------
+2. NRP: 69090552
+   Nama: Rahmat Kurniawan
+   Pangkat: IPDA
+   Jabatan: Kaurbinops
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 69090552
+   Password: 69090552
+   Role: penilai
+--------------------------------------------------------------------------------
+3. NRP: 80070492
+   Nama: Aron Perangin-angin
+   Pangkat: AIPTU
+   Jabatan: Ps. Kanit Pamwisata
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 80070492
+   Password: 80070492
+   Role: penilai
+--------------------------------------------------------------------------------
+4. NRP: 80100836
+   Nama: Maruba Nainggolan
+   Pangkat: AIPTU
+   Jabatan: Ps. Kanit Pamwaster
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 80100836
+   Password: 80100836
+   Role: penilai
+--------------------------------------------------------------------------------
+5. NRP: 82080038
+   Nama: Patri Sihaloho
+   Pangkat: AIPDA
+   Jabatan: Ps. Panit Pamwisata
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 82080038
+   Password: 82080038
+   Role: penilai
+--------------------------------------------------------------------------------
+6. NRP: 80050898
+   Nama: Deny Wahyu
+   Pangkat: AIPDA
+   Jabatan: Ps. Panit Pamwaster
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 80050898
+   Password: 80050898
+   Role: penilai
+--------------------------------------------------------------------------------
+7. NRP: 80080892
+   Nama: Mangatur Tua Tindaon
+   Pangkat: AIPDA
+   Jabatan: Ps. Kaurmintu
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 80080892
+   Password: 80080892
+   Role: penilai
+--------------------------------------------------------------------------------
+8. NRP: 83050202
+   Nama: Henri F. Sianipar
+   Pangkat: AIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 83050202
+   Password: 83050202
+   Role: penilai
+--------------------------------------------------------------------------------
+9. NRP: 85030645
+   Nama: Roy Haris St. Simaremare
+   Pangkat: AIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 85030645
+   Password: 85030645
+   Role: penilai
+--------------------------------------------------------------------------------
+10. NRP: 89080105
+   Nama: Claudius Haris Pardede
+   Pangkat: BRIGPOL
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 89080105
+   Password: 89080105
+   Role: penilai
+--------------------------------------------------------------------------------
+11. NRP: 96110130
+   Nama: Rianto Sitanggang
+   Pangkat: BRIGPOL
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 96110130
+   Password: 96110130
+   Role: penilai
+--------------------------------------------------------------------------------
+12. NRP: 94090948
+   Nama: Roy Nanda Sembiring Ambaren
+   Pangkat: BRIGPOL
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 94090948
+   Password: 94090948
+   Role: penilai
+--------------------------------------------------------------------------------
+13. NRP: 96031057
+   Nama: Candra Silalahi, S.H.
+   Pangkat: BRIPTU
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 96031057
+   Password: 96031057
+   Role: penilai
+--------------------------------------------------------------------------------
+14. NRP: 03020368
+   Nama: Christian Prosperous Simanungkalit
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 03020368
+   Password: 03020368
+   Role: penilai
+--------------------------------------------------------------------------------
+15. NRP: 01060884
+   Nama: Horas J.M. Aritonang
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 01060884
+   Password: 01060884
+   Role: penilai
+--------------------------------------------------------------------------------
+16. NRP: 02100599
+   Nama: Yunus Samdio Sidabutar
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 02100599
+   Password: 02100599
+   Role: penilai
+--------------------------------------------------------------------------------
+17. NRP: 03010565
+   Nama: Rainheart Sitanggang
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 03010565
+   Password: 03010565
+   Role: penilai
+--------------------------------------------------------------------------------
+18. NRP: 02011312
+   Nama: Bonifasius Nainggolan
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 02011312
+   Password: 02011312
+   Role: penilai
+--------------------------------------------------------------------------------
+19. NRP: 00080816
+   Nama: Ray Yondo Siahaan
+   Pangkat: BRIPDA
+   Jabatan: Bintara Sat Pamobvit
+   Satker: Sat Pamobvit Polres Samosir
+   Username: 00080816
+   Password: 00080816
+   Role: penilai
+--------------------------------------------------------------------------------
+
+Total: 19 personil
+
+Statistik:
+- Admin: 1 orang
+- Penilai: 18 orang

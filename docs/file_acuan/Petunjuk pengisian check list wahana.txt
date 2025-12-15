@@ -1,0 +1,10 @@
+FILE ASLI: Petunjuk pengisian check list wahana.docx
+============================================================
+
+Petunjuk pengisian
+Pengisian nilai kriteria:
+0  :  pemberian nilai 0 diberikan untuk pertanyaan pada cek list yang tidak dapat dipenuhi dengan mengisi deksripsi temuan (nihil) dan mengisi rekomendasi agar pihak wahana melengkapi item pertanyaan.
+1	: Pemberian nilai 1 diberikan untuk pertanyaan pada cek list yang terdapat kekurangan, mengisi kolom temuan berupa alasan kekurangan ( contoh : kurang baik) dan selanjutnya mengisi kolom rekomendasi untuk melengkapi temuan kekurangan tersebut.
+2 : Pemberian nilai 2 untuk pertanyaan pada cek list yang dapat di penuhi. Pemberian nilai 2 mengisyaratan tidak terdapat temuan dan tidak memerlukan rekomendasi.
+Pengisian referensi:
+Referensi diisi berkaitan sebagai bukti dari pemberian nilai berupa bukti surat, dokumentasi fhoto untuk pemeriksaan fisik wahana. 

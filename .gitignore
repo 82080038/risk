@@ -1,0 +1,56 @@
+# Risk Assessment Objek Wisata - .gitignore
+
+# Uploads
+assets/uploads/*
+!assets/uploads/.gitkeep
+
+# Config (file konfigurasi dengan kredensial)
+config/database.php
+config/config.php
+# Template config tetap di-upload
+!config/database.production.php
+!config/config.production.php
+!config/database.php.example
+!config/config.php.example
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Cache
+cache/
+tmp/
+
+# Vendor (jika menggunakan composer)
+vendor/
+
+# Node modules (jika ada)
+node_modules/
+
+# Environment files
+.env
+.env.local
+

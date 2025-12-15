@@ -1,0 +1,880 @@
+/**
+ * Custom CSS - Mobile First Design
+ * Risk Assessment Objek Wisata
+ * Optimized for 99% mobile usage, still good on desktop
+ */
+
+/* ============================================
+   KATEGORI BADGE - Make it more visible
+   ============================================ */
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+    font-weight: bold;
+    border: 2px solid #ff9800;
+}
+
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+    color: #fff !important;
+    font-weight: bold;
+    border: 2px solid #138496;
+}
+
+.badge.bg-primary {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    font-weight: bold;
+    border: 2px solid #0a58ca;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    font-weight: bold;
+    border: 2px solid #b02a37;
+}
+
+/* Kategori Icon */
+.badge .icon-kategori,
+.badge span[style*="font-size: 1"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* ============================================
+   MOBILE FIRST - BASE STYLES
+   ============================================ */
+
+:root {
+    --mobile-padding: 0.75rem;
+    --desktop-padding: 1.5rem;
+    --touch-target: 48px;
+    --mobile-font-base: 16px;
+    --desktop-font-base: 16px;
+    --mobile-h1: 1.75rem;
+    --mobile-h2: 1.5rem;
+    --mobile-h3: 1.25rem;
+    --mobile-h4: 1.125rem;
+    --mobile-h5: 1rem;
+    --mobile-h6: 0.875rem;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--mobile-font-base);
+    line-height: 1.6;
+    color: #212529;
+    background-color: #f8f9fa;
+    padding-bottom: 80px; /* Space for bottom nav on mobile */
+}
+
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+
+.container-fluid {
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
+    max-width: 100%;
+}
+
+/* ============================================
+   TYPOGRAPHY - MOBILE FIRST
+   ============================================ */
+
+h1 {
+    font-size: var(--mobile-h1);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: var(--mobile-h2);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+}
+
+h3 {
+    font-size: var(--mobile-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+h4, h5, h6 {
+    font-size: var(--mobile-h4);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+small {
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   CARDS - MOBILE OPTIMIZED
+   ============================================ */
+
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-footer {
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   BUTTONS - TOUCH FRIENDLY
+   ============================================ */
+
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    min-height: var(--touch-target);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-height: 40px;
+}
+
+.btn-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    min-height: 56px;
+}
+
+.btn-block,
+.btn.w-100 {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* Button groups on mobile */
+@media (max-width: 767.98px) {
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem !important;
+    }
+}
+
+/* ============================================
+   FORMS - MOBILE OPTIMIZED
+   ============================================ */
+
+.form-control,
+.form-select {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    min-height: var(--touch-target);
+    border: 2px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    outline: none;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.form-check-label {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Radio buttons for nilai (0, 1, 2) - larger for mobile */
+.nilai-radio-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.nilai-radio-group .form-check {
+    flex: 1;
+    min-width: 100px;
+}
+
+.nilai-radio-group .form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.nilai-radio-group .form-check-label {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    border: 2px solid #dee2e6;
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.nilai-radio-group .form-check-input:checked + .form-check-label {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+/* ============================================
+   TABLES - MOBILE RESPONSIVE
+   ============================================ */
+
+.table-responsive {
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    width: 100%;
+    min-width: 600px; /* Force horizontal scroll on mobile */
+}
+
+.table th {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    padding: 0.75rem 0.5rem;
+    vertical-align: middle;
+}
+
+.table-sm th,
+.table-sm td {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.8125rem;
+}
+
+/* Card view for tables on mobile */
+@media (max-width: 767.98px) {
+    .table-mobile-card {
+        display: block;
+    }
+    
+    .table-mobile-card thead {
+        display: none;
+    }
+    
+    .table-mobile-card tbody,
+    .table-mobile-card tr,
+    .table-mobile-card td {
+        display: block;
+        width: 100%;
+    }
+    
+    .table-mobile-card tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: white;
+    }
+    
+    .table-mobile-card td {
+        border: none;
+        padding: 0.5rem 0;
+        text-align: left;
+    }
+    
+    .table-mobile-card td:before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+        display: inline-block;
+        width: 40%;
+    }
+    
+    /* Penilaian table mobile view */
+    .penilaian-table thead {
+        display: none;
+    }
+    
+    .penilaian-table tbody,
+    .penilaian-table tr {
+        display: block;
+        width: 100%;
+    }
+    
+    .penilaian-table tr {
+        margin-bottom: 1.5rem;
+        border: 2px solid #dee2e6;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .penilaian-table td {
+        display: block;
+        width: 100% !important;
+        border: none;
+        padding: 0.75rem 0;
+        text-align: left;
+    }
+    
+    .penilaian-table td:first-child {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0d6efd;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #dee2e6;
+        margin-bottom: 0.75rem;
+    }
+    
+    .penilaian-table td[data-label="Nilai"] {
+        display: none;
+    }
+    
+    .penilaian-table .form-control,
+    .penilaian-table .form-select {
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+    
+    .penilaian-table textarea {
+        min-height: 100px;
+    }
+}
+
+/* ============================================
+   NAVBAR - MOBILE OPTIMIZED
+   ============================================ */
+
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: white !important;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    min-width: var(--touch-target);
+    min-height: var(--touch-target);
+}
+
+.navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    min-height: var(--touch-target);
+    display: flex;
+    align-items: center;
+}
+
+/* ============================================
+   TABS - MOBILE FRIENDLY
+   ============================================ */
+
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-tabs .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    min-height: var(--touch-target);
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    border-bottom-color: #dee2e6;
+    color: #212529;
+}
+
+.nav-tabs .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    font-weight: 600;
+}
+
+/* ============================================
+   STATISTICS CARDS - MOBILE
+   ============================================ */
+
+.stat-card {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.stat-card .stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   PROGRESS BARS - MOBILE
+   ============================================ */
+
+.progress {
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #e9ecef;
+    overflow: hidden;
+}
+
+.progress-bar {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   BADGES - MOBILE
+   ============================================ */
+
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+}
+
+.badge-lg {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+}
+
+/* ============================================
+   ALERTS - MOBILE
+   ============================================ */
+
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+    padding: 1rem;
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+}
+
+.alert-dismissible .btn-close {
+    padding: 1rem;
+    min-width: var(--touch-target);
+    min-height: var(--touch-target);
+}
+
+/* ============================================
+   MODALS - MOBILE OPTIMIZED
+   ============================================ */
+
+.modal-dialog {
+    margin: 0.5rem;
+}
+
+.modal-content {
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    padding: 1.25rem;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #dee2e6;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.modal-footer .btn {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ============================================
+   BOTTOM NAVIGATION - MOBILE ONLY
+   ============================================ */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1020;
+    padding: 0.5rem 0;
+    display: none;
+}
+
+.bottom-nav .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom-nav .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.75rem;
+    min-width: 60px;
+    transition: color 0.2s;
+}
+
+.bottom-nav .nav-link.active {
+    color: #0d6efd;
+}
+
+.bottom-nav .nav-link i {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (max-width: 767.98px) {
+    .bottom-nav {
+        display: block;
+    }
+    
+    body {
+        padding-bottom: 70px;
+    }
+}
+
+/* ============================================
+   STICKY BUTTONS - MOBILE
+   ============================================ */
+
+.sticky-bottom-actions {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    margin: 0 calc(-1 * var(--mobile-padding));
+}
+
+@media (max-width: 767.98px) {
+    .sticky-bottom-actions {
+        margin: 0 calc(-1 * var(--mobile-padding));
+    }
+}
+
+/* ============================================
+   FORM PENILAIAN - MOBILE OPTIMIZED
+   ============================================ */
+
+.penilaian-form .card {
+    margin-bottom: 1.5rem;
+}
+
+.penilaian-form .table {
+    font-size: 0.8125rem;
+}
+
+.penilaian-form .table td {
+    padding: 0.75rem 0.5rem;
+    vertical-align: top;
+}
+
+.penilaian-form .form-select-sm {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    min-height: 44px;
+}
+
+.penilaian-form textarea.form-control-sm {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    min-height: 80px;
+}
+
+/* ============================================
+   LOADING & SPINNERS
+   ============================================ */
+
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.2em;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(0.75rem, env(safe-area-inset-left));
+        padding-right: max(0.75rem, env(safe-area-inset-right));
+    }
+    
+    .bottom-nav {
+        padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* ============================================
+   DESKTOP ENHANCEMENTS
+   ============================================ */
+
+@media (min-width: 768px) {
+    body {
+        padding-bottom: 0;
+    }
+    
+    .container-fluid {
+        padding-left: var(--desktop-padding);
+        padding-right: var(--desktop-padding);
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .card-header {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .table {
+        font-size: 0.9375rem;
+        min-width: auto;
+    }
+    
+    .table th,
+    .table td {
+        padding: 1rem 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.625rem 1.25rem;
+        min-height: auto;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 0.625rem 1rem;
+        min-height: auto;
+    }
+    
+    .bottom-nav {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-fluid {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .btn,
+    .no-print,
+    .bottom-nav {
+        display: none !important;
+    }
+    
+    body {
+        padding-bottom: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+        page-break-inside: avoid;
+    }
+    
+    .table {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
+   FOOTER COPYRIGHT
+   ============================================ */
+
+.footer-copyright {
+    margin-top: auto;
+    font-size: 0.875rem;
+}
+
+.footer-copyright a {
+    color: #6c757d;
+    transition: color 0.2s;
+}
+
+.footer-copyright a:hover {
+    color: #0d6efd;
+}
+
+/* Mobile adjustments for footer */
+@media (max-width: 768px) {
+    .footer-copyright {
+        font-size: 0.75rem;
+        padding: 0.75rem 0 !important;
+    }
+    
+    .footer-copyright .row {
+        margin: 0;
+    }
+    
+    .footer-copyright .col-12 {
+        padding: 0.25rem 0.75rem;
+    }
+}

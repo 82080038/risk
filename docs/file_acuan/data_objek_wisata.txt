@@ -1,0 +1,421 @@
+================================================================================
+DATA OBJEK WISATA - POLRES SAMOSIR
+Risk Assessment Objek Wisata
+================================================================================
+
+1. Pantai Pasir Putih Parbaba
+   Lokasi: Parbaba/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Kawasan Ekonomi Khusus
+--------------------------------------------------------------------------------
+2. Pantai Indah Situngkir
+   Lokasi: Situngkir/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+3. Pantai Tanda Rabun
+   Lokasi: Desa Dos roha/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+4. Pantai Batu Hoda
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+5. Huta Sialagan
+   Lokasi: Siallagan/Samosir
+   Jenis: Wisata Alam, Wisata Sejarah dan Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Kawasan Ekonomi Khusus
+--------------------------------------------------------------------------------
+6. Patung Si Gale-gale
+   Lokasi: Tomok/Samosir
+   Jenis: Wisata Sejarah dan Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Kawasan Ekonomi Khusus
+--------------------------------------------------------------------------------
+7. Kawasan Tomok
+   Lokasi: Tomok/Samosir
+   Jenis: Wisata Belanja
+   Wilayah: Polres Samosir
+   Keterangan: Kawasan Ekonomi Khusus
+--------------------------------------------------------------------------------
+8. Air Terjun Efrata
+   Lokasi: Harian/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+9. Pantai Pandua
+   Lokasi: Nainggolan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+10. Pantai Indah Sipinggan
+   Lokasi: Sipinggan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+11. Danau Aek Natonang
+   Lokasi: Tanjungan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+12. Dermaga Jetty
+   Lokasi: Situngkir/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+13. Pantai Sigur-gur
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+14. Bukit Sibeabea
+   Lokasi: Harian/Samosir
+   Jenis: Wisata Alam dan Wisata Religi
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+15. Aek Sipitu Dai
+   Lokasi: Sianjur mula-mula/Samosir
+   Jenis: Wisata budaya dan Wisata Religi
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+16. Batu Sawan
+   Lokasi: Sianjur mula-mula /Samosir
+   Jenis: Wisata budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+17. Air Terjun Naisogop
+   Lokasi: Sianjur mula-mula /Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+18. Menara Pandang Tele
+   Lokasi: Harian/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+19. Kawasan Sigulatti-Pusat Informasi Geopark
+   Lokasi: Sianjur mula-mula /Samosir
+   Jenis: Wisata budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+20. Ruma Parsaktian Guru Tatea Bulan
+   Lokasi: Sianjur mula-mula /Samosir
+   Jenis: Wisata Budaya dan wisata religi
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+21. Bukit Holbung
+   Lokasi: Dolokraja/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+22. Pemandian Aek Rangat
+   Lokasi: Pangururan/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+23. Sitalmaktalmak
+   Lokasi: Sihotang/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+24. Kawasan Hutan Pinus
+   Lokasi: Harian/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+25. Wetland Biocord-Putri Lopian (DLH)
+   Lokasi: Pangururan/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+26. Kampung Tenun Lumban Suhi
+   Lokasi: Pangururan/ Samosir
+   Jenis: Wisata Belanja
+   Wilayah: Polres Samosir
+   Keterangan: Kawasan Ekonomi Khusus
+--------------------------------------------------------------------------------
+27. Pantai Sibolazi
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+28. Pantai Langat
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+29. Sijukjuk Hill
+   Lokasi: Harian boho/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+30. Bona Bona Hill
+   Lokasi: Harian boho/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+31. Hidden Beach
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+32. Kuburan diatas pohon
+   Lokasi: Tomok/Samosir
+   Jenis: Wisata Religi
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+33. Objek Wisata Lagundi
+   Lokasi: Onanrunggu/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+34. Museum Huta Bolon
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+35. Tugu toga Sinaga
+   Lokasi: Palipi/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+36. Danau Sidihoni
+   Lokasi: Pangururan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+37. Aek Sipaloinggang
+   Lokasi: Pangururan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+38. Aek Tawar
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+39. Padan togu
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+40. Wisata Pangaloan
+   Lokasi: Nainggolan/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+41. Batu Guru
+   Lokasi: Nainggolan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+42. Mual Boru Saroding
+   Lokasi: Sitio-tio/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+43. Dolok Sipatungan
+   Lokasi: Sitio-tio/ Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+44. Batu Parpadanan
+   Lokasi: Sitio-tio/ Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+45. Mual Boru Pareme
+   Lokasi: Sitio-tio/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+46. Parhutaan Siraja Lottung
+   Lokasi: Sitio-tio/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+47. Rumah Parsaktian Lumban Raja
+   Lokasi: Onanrunggu/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+48. Mual Tornong Parhuta hutaan
+   Lokasi: Sitio-tio/ Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+49. Agrowisata Raptamawijaya
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Agrowisata
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+50. Batu Maroppa
+   Lokasi: Sitio-tio/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+51. Wisata Leluhur Gunung Uluh Darat
+   Lokasi: Sitio-tio/Samosir
+   Jenis: Wisata alam dan Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+52. Aek Bunga-bunga
+   Lokasi: Sianjur mula-mula/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+53. Tulas View
+   Lokasi: Pangururan/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+54. Perkampungan Siraja Batak
+   Lokasi: Sianjur Mula-mula/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+55. Kawasan Wisata Desa Siboro
+   Lokasi: Sianjur Mula-mula/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+56. Air Terjun Sampuran Pangaribuan
+   Lokasi: Palipi/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+57. Siborbor Rinabolak
+   Lokasi: Onanrunggu/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+58. Eco Village Silimalombu
+   Lokasi: Onanrunggu/Samosir
+   Jenis: Agrowisata
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+59. Hariara Bolon Sukkean
+   Lokasi: Onanrunggu/Samosir
+   Jenis: Wisata Religi
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+60. Liang Sipogu
+   Lokasi: Simanindo/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+61. Pea Porohan
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+62. Goa Lumban Dolok
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+63. Sampuran Bona-bona
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+64. Sampuran Sigaol
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+65. Aek Marulak
+   Lokasi: Ronggur Nihuta/Samosir
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+66. Batu Rante
+   Lokasi: Palipi/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+67. Hariara Maranak
+   Lokasi: Palipi/Samosir
+   Jenis: Wisata Budaya
+   Wilayah: Polres Samosir
+   Keterangan: Objek Wisata Biasa
+--------------------------------------------------------------------------------
+68. Jembatan tano Ponggol
+   Lokasi: Kec. Pangururan
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Vital nasional
+--------------------------------------------------------------------------------
+69. Water Front City
+   Lokasi: Kec. Pangururan
+   Jenis: Wisata Alam
+   Wilayah: Polres Samosir
+   Keterangan: Objek Vital nasional
+--------------------------------------------------------------------------------
+
+Total: 69 objek wisata

@@ -1,0 +1,15 @@
+{
+    "name": "risk-assessment/objek-wisata",
+    "description": "Risk Assessment Objek Wisata - Polres Samosir",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "tecnickcom/tcpdf": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "RiskAssessment\\": "src/"
+        }
+    }
+}
+

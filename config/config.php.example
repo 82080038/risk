@@ -1,0 +1,46 @@
+<?php
+/**
+ * Konfigurasi Aplikasi - TEMPLATE
+ * Risk Assessment Objek Wisata
+ * 
+ * INSTRUKSI:
+ * 1. Copy file ini menjadi config.php
+ * 2. Sesuaikan BASE_URL dengan domain Anda
+ */
+
+// Base URL - SESUAIKAN DENGAN DOMAIN ANDA
+define('BASE_URL', 'http://localhost/RISK/');
+
+// Path aplikasi
+define('APP_PATH', __DIR__ . '/../');
+
+// Session
+session_start();
+
+// Timezone
+date_default_timezone_set('Asia/Jakarta');
+
+// Error reporting (disable di production)
+// Untuk production, set ke 0 dan enable error logging
+// error_reporting(0);
+// ini_set('display_errors', 0);
+// ini_set('log_errors', 1);
+// ini_set('error_log', APP_PATH . 'logs/error.log');
+
+// Untuk development (current)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Upload settings
+define('UPLOAD_PATH', APP_PATH . 'assets/uploads/');
+define('MAX_UPLOAD_SIZE', 5 * 1024 * 1024); // 5MB
+define('ALLOWED_EXTENSIONS', ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']);
+
+// Pagination
+define('ITEMS_PER_PAGE', 10);
+
+// Tahun default untuk laporan
+define('DEFAULT_YEAR', date('Y'));
+
+?>
+
